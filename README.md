@@ -1,17 +1,16 @@
-# ✨ Xero Arch Installer v1.0
+# ✨ Xero Arch Installer v1.3
 
 A beautiful, streamlined Arch Linux installer designed by XeroLinux with a modern TUI.
 
 ![Screenshot](https://i.imgur.com/vl5hMAF.png)
 
-![Xero Arch Installer](https://img.shields.io/badge/version-1.0-blue)
+![Xero Arch Installer](https://img.shields.io/badge/version-1.3-blue)
 ![License](https://img.shields.io/badge/license-GPL--3.0-green)
 
 ## Features
 
-- 🎨 **Beautiful TUI** - Modern interface using `gum` for clean menus
-- 💾 **Flexible Disk Setup** - Support for BTRFS (with subvolumes), EXT4, XFS
-- 🔒 **LUKS Encryption** - Optional full disk encryption
+- 💾 **Flexible Disk Setup** - Support for BTRFS, EXT4, and XFS
+- 🔒 **LUKS2 Encryption** - Optional encryption with root-only or root+boot
 - 🎮 **Graphics Drivers** - Easy selection for NVIDIA, AMD, Intel, or VMs
 - 🔄 **Smart Swap** - ZRAM with compression or traditional swap file
 - 🚀 **Automated KDE Setup** - Runs XeroLinux KDE installer.
@@ -67,7 +66,7 @@ Select the interface language for the installer.
 
 - **Target Disk**: Select installation disk (⚠️ will be erased!)
 - **Filesystem**: BTRFS (recommended), EXT4, or XFS
-- **Encryption**: Optional LUKS2 full disk encryption
+- **Encryption**: Optional LUKS2 encryption (root only or root + boot)
 
 ### 4. Swap
 
@@ -124,11 +123,12 @@ When using BTRFS, the installer creates:
 
 ## Encryption
 
-When enabled, the installer:
+When enabled, the installer uses **LUKS2** with modern systemd-based initramfs hooks:
+
 1. Creates a LUKS2 encrypted container
-2. Configures mkinitcpio with `encrypt` hook
-3. Sets up GRUB with proper kernel parameters
-4. Prompts for password at boot
+2. Offers **root only** (single password prompt) or **root + boot** (GRUB unlocks boot too)
+3. Configures mkinitcpio with `sd-encrypt` hook and `rd.luks.name` kernel cmdline
+4. Sets up GRUB with cryptodisk support when boot encryption is selected
 
 ## File Structure
 
@@ -189,8 +189,13 @@ Modify the `install_base_system()` function to add packages to the base install.
 
 ## Version History
 
+- **v1.3** - LUKS2 & encryption scope
+  - Upgraded to LUKS2 with systemd `sd-encrypt` hook
+  - Added encryption scope choice: root only or root + boot
+  - Fixed skel config copy reliability for user home
+  - Updated display and version strings
+
 - **v1.0** - Initial release
-  - Gum-based TUI
   - BTRFS with subvolumes
   - LUKS encryption support
   - Graphics driver selection
