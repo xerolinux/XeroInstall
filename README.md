@@ -1,10 +1,10 @@
-# ✨ Xero Arch Installer v1.3
+# ✨ Xero Arch Installer v1.4
 
 A beautiful, streamlined Arch Linux installer designed by XeroLinux with a modern TUI.
 
 ![Screenshot](https://i.imgur.com/vl5hMAF.png)
 
-![Xero Arch Installer](https://img.shields.io/badge/version-1.3-blue)
+![Xero Arch Installer](https://img.shields.io/badge/version-1.4-blue)
 ![License](https://img.shields.io/badge/license-GPL--3.0-green)
 
 ## Features
@@ -20,17 +20,7 @@ A beautiful, streamlined Arch Linux installer designed by XeroLinux with a moder
 Boot into the Arch Linux live ISO and run the following command :
 
 ```bash
-bash <(curl -fsSL https://xerolinux.xyz/script/xero-install/install.sh)
-```
-
-Or step by step:
-
-```bash
-# Connect to internet (for WiFi)
-iwctl
-
-# Run installer
-curl -fsSL https://xerolinux.xyz/script/xero-install/install.sh | bash
+bash <(curl -fsSL https://tinyurl.com/xeroinstall)
 ```
 
 ## What Gets Installed
@@ -188,6 +178,11 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 Modify the `install_base_system()` function to add packages to the base install.
 
 ## Version History
+
+- **v1.4** - Unified package selection
+  - Condensed 12 separate prompts into a single categorized selection screen
+  - Added pass to password managers, moved LibreOffice to its own Office section
+  - Trimmed package list for a leaner default offering
 
 - **v1.3** - LUKS2 & encryption scope
   - Upgraded to LUKS2 with systemd `sd-encrypt` hook
