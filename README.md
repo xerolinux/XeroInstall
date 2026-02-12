@@ -1,10 +1,10 @@
-# ✨ Xero Arch Installer v1.4
+# ✨ Xero Arch Installer v1.5
 
 A beautiful, streamlined Arch Linux installer designed by XeroLinux with a modern TUI.
 
 ![Screenshot](https://i.imgur.com/vl5hMAF.png)
 
-![Xero Arch Installer](https://img.shields.io/badge/version-1.4-blue)
+![Xero Arch Installer](https://img.shields.io/badge/version-1.5-blue)
 ![License](https://img.shields.io/badge/license-GPL--3.0-green)
 
 ## Features
@@ -80,6 +80,12 @@ bash xero-install.sh
 Modify the `install_base_system()` function to add packages to the base install.
 
 ## Version History
+
+- **v1.5** - Boot partition & cleanup
+  - Increased boot partition size from 512M to 2048M
+  - Simplified internet connectivity check
+  - Removed VPN, Blender, and Extras sections from package selection
+  - Further trimmed package list to 37 curated options
 
 - **v1.4** - Unified package selection
   - Condensed 12 separate prompts into a single categorized selection screen
