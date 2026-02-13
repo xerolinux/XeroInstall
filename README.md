@@ -20,7 +20,7 @@ A beautiful, streamlined Arch Linux installer designed by XeroLinux with a moder
 Boot into the Arch Linux live ISO and run the following command :
 
 ```bash
-bash <(curl -fsSL https://tinyurl.com/xeroinstall)
+bash <(curl -fsSL https://urls.xerolinux.xyz/xeroinstall)
 ```
 
 ## What Gets Installed
