@@ -138,7 +138,7 @@ INTERNET_OK="no"
 check_internet() {
     [[ "$INTERNET_OK" == "yes" ]] && return 0
 
-    if ping -c 6 -W 2 archlinux.org &>/dev/null; then
+    if ping -c 1 -W 3 archlinux.org &>/dev/null; then
         INTERNET_OK="yes"
         return 0
     fi
@@ -166,7 +166,7 @@ ensure_dependencies() {
 
     if [[ ${#deps_needed[@]} -gt 0 ]]; then
         echo -e "${CYAN}Installing required dependencies...${NC}"
-        pacman -Syu --noconfirm "${deps_needed[@]}" &>/dev/null
+        pacman -Sy --noconfirm "${deps_needed[@]}" &>/dev/null
     fi
 }
 
@@ -1561,9 +1561,12 @@ run_kde_installer() {
 
 main() {
     check_root
-    check_internet
-    ensure_dependencies
     check_uefi
+    # Skip internet/deps check if launched from install.sh (deps already installed)
+    if ! command -v gum &>/dev/null; then
+        check_internet
+        ensure_dependencies
+    fi
     show_main_menu
 }
 
