@@ -1,10 +1,10 @@
-# ✨ Xero Arch Installer v1.5
+# ✨ Xero Arch Installer v1.6
 
 A beautiful, streamlined Arch Linux installer designed by XeroLinux with a modern TUI.
 
 ![Screenshot](https://i.imgur.com/vl5hMAF.png)
 
-![Xero Arch Installer](https://img.shields.io/badge/version-1.5-blue)
+![Xero Arch Installer](https://img.shields.io/badge/version-1.6-blue)
 ![License](https://img.shields.io/badge/license-GPL--3.0-green)
 
 ## Features
@@ -80,6 +80,15 @@ bash xero-install.sh
 Modify the `install_base_system()` function to add packages to the base install.
 
 ## Version History
+
+- **v1.6** - Speed & polish
+  - Added parallel downloads menu option
+  - Configured pacman with more options
+  - Fixed btrfs swap file NOCOW attribute
+  - Fixed partial upgrade risk (pacman -Sy to -Syu)
+  - Fixed incorrect package names
+  - Reduced warning sleep times for faster installs
+  - Added download validation and cleanup trap to launcher
 
 - **v1.5** - Boot partition & cleanup
   - Increased boot partition size from 512M to 2048M
